@@ -13,6 +13,6 @@ namespace AuvoChallenge.Models
         {
         }
 
-        public DbSet<AuvoChallenge.Models.Transfer> Transfer { get; set; }
+        public DbSet<Transfer> Transfer { get; set; }
     }
 }
