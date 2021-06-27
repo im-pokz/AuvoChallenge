@@ -51,7 +51,7 @@ namespace AuvoChallenge.Controllers
         // POST: Transfers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Value,Date,Observation")] Transfer transfer)
+        public async Task<IActionResult> Create([Bind("Id,Name,Value,Date,Observation,Type")] Transfer transfer)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace AuvoChallenge.Controllers
         // POST: Transfers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value,Date,Observation")] Transfer transfer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Value,Date,Observation,Type")] Transfer transfer)
         {
             if (id != transfer.Id)
             {
