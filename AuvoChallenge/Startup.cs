@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using AuvoChallenge.Models;
 
 namespace AuvoChallenge
 {
@@ -33,6 +35,10 @@ namespace AuvoChallenge
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<AuvoChallengeContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("AuvoChallengeContext"), builder =>
+                        builder.MigrationsAssembly("AuvoChallenge")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
