@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AuvoChallenge.Models.ViewModels;
 
 namespace AuvoChallenge.Controllers
 {
@@ -17,7 +18,8 @@ namespace AuvoChallenge.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "AuvoChallenge App";
+            ViewData["Name"] = "Pietro Niero Roque";
 
             return View();
         }

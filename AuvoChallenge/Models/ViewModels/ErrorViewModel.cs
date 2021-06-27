@@ -1,6 +1,6 @@
 using System;
 
-namespace AuvoChallenge.Models
+namespace AuvoChallenge.Models.ViewModels
 {
     public class ErrorViewModel
     {
