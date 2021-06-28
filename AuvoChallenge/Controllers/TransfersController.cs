@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AuvoChallenge.Models;
+using AuvoChallenge.Services;
 
 namespace AuvoChallenge.Controllers
 {
     public class TransfersController : Controller
     {
         private readonly AuvoChallengeContext _context;
-
-        public TransfersController(AuvoChallengeContext context)
+        private readonly TransferServices _transferServices;
+       
+        public TransfersController(AuvoChallengeContext context, TransferServices transferServices)
         {
             _context = context;
+            _transferServices = transferServices;
         }
 
         // GET: Transfers
@@ -23,6 +26,22 @@ namespace AuvoChallenge.Controllers
         {
             return View(await _context.Transfer.ToListAsync());
         }
+
+        public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
+        {
+            if (!minDate.HasValue)
+            {
+                minDate = new DateTime(2021, 01, 01);
+            }
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+            var result = await _transferServices.FindByDateAsync(minDate, maxDate);
+            return View(result);
+        } 
 
         // GET: Transfers/Details/5
         public async Task<IActionResult> Details(int? id)

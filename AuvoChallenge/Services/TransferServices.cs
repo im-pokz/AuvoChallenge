@@ -28,8 +28,6 @@ namespace AuvoChallenge.Services
                 result = result.Where(x => x.Date <= maxDate.Value);
             }
             return await result
-                .Include(x => x.Name)
-                .Include(x => x.Value)
                 .OrderByDescending(x => x.Date)
                 .ToListAsync();
         }
