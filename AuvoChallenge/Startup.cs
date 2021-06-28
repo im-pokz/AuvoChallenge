@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using AuvoChallenge.Models;
 using AuvoChallenge.Data;
+using AuvoChallenge.Services;
 
 namespace AuvoChallenge
 {
@@ -44,6 +45,7 @@ namespace AuvoChallenge
                         builder.MigrationsAssembly("AuvoChallenge")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<TransferServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
